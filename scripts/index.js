@@ -45,6 +45,14 @@ const linkedList = () => {
         return rec(head());
     }
 
+    const tail = () => {
+        let pointer = head();
+        while(pointer.nextNode != null) {
+            pointer = pointer.nextNode;
+        }
+        return pointer;
+    }
+
     const toString = () => {
         const genStr = (x) => {
             if(x == null) {
@@ -63,6 +71,7 @@ const linkedList = () => {
         append,
         prepend,
         size,
+        tail,
         toString,
     };
 }
@@ -97,3 +106,4 @@ console.log(l.head().value());
 console.log(l.head().nextNode.value());
 console.log(l.toString());
 console.log(l.size());
+console.log(l.tail().value());
