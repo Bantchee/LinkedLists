@@ -95,7 +95,7 @@ const linkedList = () => {
             count++;
         }
 
-        return (pointer.nextNode != null) ;
+        return (pointer.value() == value) ? count : null;
     }
 
     const toString = () => {
@@ -120,6 +120,7 @@ const linkedList = () => {
         at,
         pop,
         contains,
+        find,
         toString,
     };
 }
@@ -161,3 +162,6 @@ console.log("LinkedList after pop: ", l.toString());
 console.log("Return true if 0 in LinkedList: ", l.contains(0));
 console.log("Return true if 3 in LinkedList: ", l.contains(3));
 console.log("Return true if 14 in LinkedList: ", l.contains(14));
+console.log("Return index 1: ", l.find(0));
+console.log("Return index 4: ", l.find(3));
+console.log("Return index null: ", l.find(14));
