@@ -54,12 +54,28 @@ const linkedList = () => {
     }
 
     const at = index => {
+        try {
+            let pointer = head();
+            while(index != 0) {
+                index--;
+                pointer = pointer.nextNode;
+            }
+            return pointer;
+        } 
+        catch(err) {
+            console.log('Index out of range');
+        }
+    }
+
+    const pop = () => {
         let pointer = head();
-        while (index != 0) {
-            index--;
+        while(pointer.nextNode.nextNode != null) {
             pointer = pointer.nextNode;
         }
-        return pointer;
+        let lastNode = pointer.nextNode; 
+        pointer.nextNode = null;
+        return lastNode;
+
     }
 
     const toString = () => {
@@ -82,6 +98,7 @@ const linkedList = () => {
         size,
         tail,
         at,
+        pop,
         toString,
     };
 }
@@ -118,3 +135,5 @@ console.log(l.toString());
 console.log(l.size());
 console.log(l.tail().value());
 console.log(l.at(2).value());
+console.log(l.pop());
+console.log("LinkedList after pop: ", l.toString());
