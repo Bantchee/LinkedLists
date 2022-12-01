@@ -40,10 +40,10 @@ const linkedList = () => {
             else {
                 return 1 + rec(x.nextNode);
             }
-        }
+        };
 
         return rec(head());
-    }
+    };
 
     const tail = () => {
         let pointer = head();
@@ -51,7 +51,7 @@ const linkedList = () => {
             pointer = pointer.nextNode;
         }
         return pointer;
-    }
+    };
 
     const at = index => {
         try {
@@ -65,7 +65,7 @@ const linkedList = () => {
         catch(err) {
             console.log('Index out of range');
         }
-    }
+    };
 
     const pop = () => {
         let pointer = head();
@@ -76,6 +76,15 @@ const linkedList = () => {
         pointer.nextNode = null;
         return lastNode;
 
+    };
+
+    const contains = value => {
+        let pointer = head();
+        while(pointer.value() != value && pointer.nextNode != null) {
+            pointer = pointer.nextNode;
+        }
+
+        return pointer.nextNode != null;
     }
 
     const toString = () => {
@@ -89,7 +98,7 @@ const linkedList = () => {
         let str = genStr(head());
 
         return str;
-    }
+    };
 
     return {
         head,
@@ -99,6 +108,7 @@ const linkedList = () => {
         tail,
         at,
         pop,
+        contains,
         toString,
     };
 }
@@ -137,3 +147,5 @@ console.log(l.tail().value());
 console.log(l.at(2).value());
 console.log(l.pop());
 console.log("LinkedList after pop: ", l.toString());
+console.log("Return true if 0 in LinkedList: ", l.contains(0));
+console.log("Return true if 14 in LinkedList: ", l.contains(14));
